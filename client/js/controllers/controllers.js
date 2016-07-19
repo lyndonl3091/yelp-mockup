@@ -128,7 +128,6 @@ console.log('showCtrl!');
 app.controller('showFavoritesCtrl', function($scope, $stateParams, User, CurrentFavorites, Business, $state) {
   console.log('showFavoritesCtrl!');
 
-  console.log('CurrentFavorites', CurrentFavorites);
 
   $scope.favorites = CurrentFavorites;
 
