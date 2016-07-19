@@ -25,6 +25,7 @@ app.controller('mainCtrl', function($scope, $state, $auth) {
 
   $scope.search = () => {
     $state.go('search', {term: $scope.input.term, location: $scope.input.location})
+    $scope.input = null;
   }
 
 });
