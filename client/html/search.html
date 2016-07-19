@@ -11,7 +11,7 @@
   <tbody>
     <tr ng-repeat='business in businesses'>
       <td>{{business.name}}</td>
-      <td>{{business.location.display_address}}</td>
+      <td>{{business.location.display_address[0]}}, {{business.location.display_address[1]}}</td>
       <td><img ng-src="{{business.rating_img_url_small}}"/></td>
       <td><img ng-src="{{business.image_url}}"/></td>
       <td>
