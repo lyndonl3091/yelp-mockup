@@ -42,12 +42,23 @@ router.post('/favorite', User.authMiddleware, (req, res) => {
       id: req.body.id,
       name: req.body.name
     }
+    let index = user.favorites.indexOf(user.favorites.filter(item => {
+      return item.id == req.body.id
+    })[0])
 
-    user.favorites.push(favorite)
+    console.log('index:', index);
 
-    user.save(err => {
-      res.status(err? 400: 200).send(err);
-    })
+    if( index > -1) {
+      res.status(400).send(err)
+    } else {
+      user.favorites.push(favorite)
+
+      user.save(err => {
+        res.status(err? 400: 200).send(err);
+      })
+
+    }
+
 
   })
 })
