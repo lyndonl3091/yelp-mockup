@@ -79,7 +79,7 @@ app.controller('profileCtrl', function($scope, $state, User, CurrentUser) {
 
 });
 
-app.controller('searchCtrl', function($scope, $state, $stateParams, Business) {
+app.controller('searchCtrl', function($scope, $state, $stateParams, User, Business) {
   console.log('searchCtrl!');
 
   console.log($stateParams.term);
@@ -98,13 +98,23 @@ app.controller('searchCtrl', function($scope, $state, $stateParams, Business) {
     $state.go('show', {id: id})
   }
 
+  User.totalUsers($stateParams.id)
+  .then(res => {
+    $scope.total = res.data.length
+  })
+
 });
 
 app.controller('showCtrl', function($scope,$stateParams, Business, User){
-
+console.log('showCtrl!');
   Business.info($stateParams.id)
   .then(res => {
     $scope.business = res;
+  })
+
+  User.totalUsers($stateParams.id)
+  .then(res => {
+    $scope.total = res.data.length
   })
 
   $scope.favorite = businessObj => {

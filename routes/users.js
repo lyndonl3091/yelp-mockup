@@ -78,6 +78,13 @@ router.put('/:id', User.authMiddleware, (req, res) => {
   })
 })
 
+router.get('/total/:id', User.authMiddleware, (req, res) => {
+  console.log('req.params.id', req.params.id);
+  User.find({favorites: { $elemMatch: {id: req.params.id}}}, {new:true}, (err, user) => {
+    res.status(err ? 400: 200).send(err || user)
+  })
+})
+
 router.delete('')
 
 

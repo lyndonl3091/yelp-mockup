@@ -11,7 +11,6 @@ app.service('Business', function($http, $q) {
   }
 
   this.info = id => {
-    console.log('service id', id);
     return $http.get(`/api/businesses/${id}`)
     .then(res => {
       return $q.resolve(res.data)
@@ -45,6 +44,10 @@ app.service('User', function($http, $q) {
 
   this.unfavorite = id => {
     return $http.put(`/api/users/${id}`)
+  }
+
+  this.totalUsers = id => {
+    return $http.get(`api/users/total/${id}`)
   }
 
 
