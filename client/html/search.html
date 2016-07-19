@@ -1,0 +1,22 @@
+<h1>Search Show</h1>
+
+<table class="table table-hover">
+  <thead>
+    <th>Business Name</th>
+    <th>Address</th>
+    <th>Rating</th>
+    <th>Photo</th>
+    <th>More?</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat='business in businesses'>
+      <td>{{business.name}}</td>
+      <td>{{business.location.display_address}}</td>
+      <td><img ng-src="{{business.rating_img_url_small}}"/></td>
+      <td><img ng-src="{{business.image_url}}"/></td>
+      <td>
+        <button class="btn btn-primary btn-sm" ng-click='info(business.id)'>Info</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
