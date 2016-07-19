@@ -3,7 +3,7 @@
 var app = angular.module('myApp');
 
 app.controller('mainCtrl', function($scope, $state, $auth) {
-  console.log('mainCtrl!');
+
 
   $scope.isAuthenticated = () => $auth.isAuthenticated();
 
@@ -15,7 +15,6 @@ app.controller('mainCtrl', function($scope, $state, $auth) {
   $scope.authenticate = provider => {
     $auth.authenticate(provider)
       .then(res => {
-        console.log('res:', res);
         $state.go('home');
       })
       .catch(err => {
@@ -49,7 +48,6 @@ app.controller('loginCtrl', function($scope, $auth, $state) {
         $scope.newUser.password2 = null;
         alert('Passwords must match.  Try again.')
       } else {
-        console.log('$scope.newUser', $scope.newUser)
         $auth.signup($scope.newUser)
         .then(res => {
           $auth.login($scope.newUser)
@@ -66,7 +64,6 @@ app.controller('loginCtrl', function($scope, $auth, $state) {
 
 
 app.controller('profileCtrl', function($scope, $state, User, CurrentUser) {
-  console.log('profileCtrl!');
 
   $scope.user = CurrentUser;
 
@@ -81,7 +78,7 @@ app.controller('profileCtrl', function($scope, $state, User, CurrentUser) {
 });
 
 app.controller('searchCtrl', function($scope, $state, $stateParams, User, Business) {
-  console.log('searchCtrl!');
+
 
   Business.search($stateParams)
   .then(res => {
@@ -98,7 +95,6 @@ app.controller('searchCtrl', function($scope, $state, $stateParams, User, Busine
 });
 
 app.controller('showCtrl', function($scope,$stateParams, Business, User){
-console.log('showCtrl!');
   Business.info($stateParams.id)
   .then(res => {
     $scope.business = res;
@@ -140,7 +136,7 @@ app.controller('showFavoritesCtrl', function($scope, $stateParams, User, Current
     swal('Deleted from favorites' )
     User.unfavorite(id)
     .then(res => {
-      console.log('index', index);
+
       $scope.favorites.splice(index, 1);
     })
     .catch(err => {
