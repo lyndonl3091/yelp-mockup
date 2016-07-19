@@ -7,7 +7,6 @@
     <th>Rating</th>
     <th>Photo</th>
     <th>More?</th>
-    <th>Total Favorites</th>
   </thead>
   <tbody>
     <tr ng-repeat='business in businesses'>
@@ -18,7 +17,6 @@
       <td>
         <button class="btn btn-primary btn-sm" ng-click='info(business.id)'>Info</button>
       </td>
-      <td>{{total}}</td>
     </tr>
   </tbody>
 </table>

@@ -98,11 +98,6 @@ app.controller('searchCtrl', function($scope, $state, $stateParams, User, Busine
     $state.go('show', {id: id})
   }
 
-  User.totalUsers($stateParams.id)
-  .then(res => {
-    $scope.total = res.data.length
-  })
-
 });
 
 app.controller('showCtrl', function($scope,$stateParams, Business, User){
@@ -118,7 +113,16 @@ console.log('showCtrl!');
   })
 
   $scope.favorite = businessObj => {
+    swal(`Added ${businessObj.name} to favorites!` )
     User.addFavorite(businessObj)
+    .then ( res => {
+      console.log('Hello!');
+      User.totalUsers($stateParams.id)
+      .then(res => {
+        $scope.total = res.data.length
+      })
+    }
+    )
   }
 
 })
@@ -135,6 +139,7 @@ app.controller('showFavoritesCtrl', function($scope, $stateParams, User, Current
   }
 
   $scope.unfavorite = (id, index) => {
+    swal('Deleted from favorites' )
     User.unfavorite(id)
     .then(res => {
       $scope.favorites.splice(index, 1);
@@ -143,5 +148,10 @@ app.controller('showFavoritesCtrl', function($scope, $stateParams, User, Current
       console.log('err:', err);
     })
   }
+
+  // User.totalUsers($stateParams.id)
+  // .then(res => {
+  //   $scope.total = res.data.length
+  // })
 
 })
