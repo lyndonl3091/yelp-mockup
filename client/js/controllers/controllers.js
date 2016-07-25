@@ -38,7 +38,7 @@ app.controller('loginCtrl', function($scope, $auth, $state) {
         $state.go('profile')
       })
       .catch(err => {
-        console.log('err:', err);
+        swal('Invalid Email or Password')
       })
     }
 
@@ -56,7 +56,7 @@ app.controller('loginCtrl', function($scope, $auth, $state) {
           })
         })
         .catch(err => {
-          console.log('err:', err);
+          swal('Make sure your password match')
         })
       }
     }
@@ -140,7 +140,7 @@ app.controller('showFavoritesCtrl', function($scope, $stateParams, User, Current
       $scope.favorites.splice(index, 1);
     })
     .catch(err => {
-      console.log('err:', err);
+      swal('Already deleted')
     })
   }
 
