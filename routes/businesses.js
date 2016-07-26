@@ -16,18 +16,12 @@ const Business = require('../models/business');
 
 let router = express.Router();
 
-// router.get('/', (req, res) => {
-//   Business.find({}, (err, business) => {
-//     res.status(err? 400: 200).send(err || business)
-//   })
-// })
+
 
 
 router.post('/search', (req, res) => {
   console.log('req.body:', req.body);
-  // yelp.business(req.body, (err, data) => {
-  //   res.status(err? 400 : 200).send(err || data)
-  // })
+
 
   yelp.search({term: req.body.term, location: req.body.location}, (err, data) => {
     console.log('err:', err);

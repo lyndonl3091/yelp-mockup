@@ -18,7 +18,6 @@ router.get('/', User.authMiddleware, (req,res) => {
 })
 
 router.get('/profile', User.authMiddleware, (req, res) => {
-  console.log('req.user:', req.user);
   res.send(req.user);
 });
 
@@ -45,8 +44,6 @@ router.post('/favorite', User.authMiddleware, (req, res) => {
     let index = user.favorites.indexOf(user.favorites.filter(item => {
       return item.id == req.body.id
     })[0])
-
-    console.log('index:', index);
 
     if( index > -1) {
       res.status(400).send(err)
@@ -90,7 +87,6 @@ router.put('/:id', User.authMiddleware, (req, res) => {
 })
 
 router.get('/total/:id', User.authMiddleware, (req, res) => {
-  console.log('req.params.id', req.params.id);
   User.find({favorites: { $elemMatch: {id: req.params.id}}}, (err, user) => {
     res.status(err ? 400: 200).send(err || user)
   })
