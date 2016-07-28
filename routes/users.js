@@ -92,13 +92,4 @@ router.get('/total/:id', User.authMiddleware, (req, res) => {
   })
 })
 
-
-
-// router.put('/:id', User.authMiddleware, (req,res) => {
-//   User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, user) => {
-//     res.status(err ? 400: 200).send(err || user);
-//   })
-// })
-
-
 module.exports = router;

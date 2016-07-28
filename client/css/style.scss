@@ -4,12 +4,31 @@
 body {
   background: url(../images/bg.jpg);
   color: white;
+
 }
 h1 {
   font-family: 'Rock Salt', cursive;
   color: white;
 }
 
+.title {
+  font-weight: bold;
+  font-size: 100px;
+  color: #000000;
+  margin-top: 130px;
+
+}
+
+.welcome {
+  font-weight: bold;
+  font-family: 'Rock Salt', cursive;
+  font-size: 50px;
+  color: #000000;
+}
+
+.table {
+  background-color: #000000;
+}
 
 .user {
   font-size: 32px;
