@@ -1,6 +1,6 @@
-<h1>Results</h1>
+<h1 class="showTitle animated fadeIn">Results</h1>
 
-<table class="table table-inverse">
+<table class="table table-inverse animated fadeIn">
   <thead>
     <th>Business Name</th>
     <th>Address</th>
@@ -9,14 +9,18 @@
     <th>More?</th>
   </thead>
   <tbody>
-    <tr ng-repeat='business in businesses'>
+    <tr ng-repeat='business in businesses | startFrom:currentPage*pageSize | limitTo:pageSize'>
       <td>{{business.name}}</td>
       <td>{{business.location.display_address[0]}}, {{business.location.display_address[1]}}</td>
       <td><img ng-src="{{business.rating_img_url_small}}"/></td>
-      <td><img ng-src="{{business.image_url}}"/></td>
+      <td><img ng-src="{{business.image_url}}" height="50px"/></td>
       <td>
         <button class="btn btn-primary btn-sm" ng-click='info(business.id)'>Info</button>
       </td>
     </tr>
   </tbody>
 </table>
+
+<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">Previous</button>
+{{currentPage+1}} / {{numberOfPages}}
+<button ng-disable="currentPage >= business.length/pageSize - 1" ng-click="currentPage=currentPage+1">Next</button>

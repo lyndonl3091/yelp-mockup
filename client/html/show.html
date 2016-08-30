@@ -1,4 +1,4 @@
-<h1>{{business.name}}</h1>
+<div class="title">{{business.name}}</div>
 <img ng-src ="{{business.rating_img_url_large}}"/>
 
 <div class="row">
@@ -9,35 +9,43 @@
 <button class="btn btn-warning" ng-if='isAuthenticated()' ng-click='favorite(business)'>
   <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Add to Favorites
 </button>
+<button class="btn btn-danger"ng-if='isAuthenticated()'>Remove from Favorites</button>
 
 <div>
   <h4>{{total}} Users Favorited This!</h4>
 </div>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <table class="table table-bordered table-inverse">
       <thead>
         <th>Phone</th>
         <th>Address</th>
+        <th>Business Hours</th>
       </thead>
       <tbody>
         <tr>
-          <td>{{business.phone}}</td>
+          <td>{{business.display_phone}}</td>
           <td>{{business.location.display_address[0]}}, {{business.location.display_address[1]}} </td>
+          td
         </tr>
       </tbody>
     </table>
-  </div>
-  <div class="col-md-6">
-    <table class="table-bordered">
-      <thead><th>Reviews:</th></thead>
-      <tbody>
-        <tr>
-          <td>{{business.reviews[0].excerpt}}</td>
-        </tr>
-      </tbody>
-    </table>
-
   </div>
 </div>
+
+  <div class="row">
+
+    <div class="col-md-12 col-md-offset-12">
+      <table class="table-bordered">
+        <thead><th>Reviews:</th></thead>
+        <tbody>
+          <tr>
+            <td>{{business.reviews}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>

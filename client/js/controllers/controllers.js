@@ -88,6 +88,14 @@ app.controller('searchCtrl', function($scope, $state, $stateParams, User, Busine
     console.log('err:', err);
   })
 
+  $scope.currentPage = 0;
+  $scope.pageSize = 5;
+  $scope.numberOfPages = function () {
+    return Math.ceil($scope.businesses.length/$scope.pageSize);
+
+  }
+
+
   $scope.info = id => {
     $state.go('show', {id: id})
   }
